@@ -1,4 +1,8 @@
-# SHMEM <--> UDP gateway
+# SHMEM <--> UDP Gateway
+
+This repository contains the necessary files to run the RTI Routing Service example from the "How does Connext help you meet the constraints of the hospital's IT department?" blogpost. Using RTI DDS Ping as a pub/sub application and Routing Service you will be able to create a gateway between a Shared Memory domain and a UDP domain.
+
+## Environment variables
 
 For your convenience, there are 2 scripts to set up environment variables:
 - Linux: _variables.sh_
@@ -26,6 +30,8 @@ On Windows, simply run it:
 For convenience, the rest of the README will use the Linux variable sign ($) instead of the Windows variable signs (%%).
 
 ## Multicast example
+
+You will need 3 terminals to run this example.
 
 1. On terminal 1, source the variables script and run an RTI DDS Ping publisher on SHMEM acting as a local publisher:
     ```
@@ -56,10 +62,14 @@ For convenience, the rest of the README will use the Linux variable sign ($) ins
     ...
     ```
 
-5. You can now shutdown the 3 applications with Ctrl+C.
+5. (Optional) You can run Wireshark and capture data to verify that the traffic only goes to the 3 different ports that Routing Service opens: Multicast discovery, Unicast discovery and Unicast user-data. Which ports are actually in use will depend on the domain ID you use for UDP and whether you started the RTI DDS Ping application on the same machine as Routing Service or not. Remember you can check the ports in use on this [spreadsheet](https://d2vkrkwbbxbylk.cloudfront.net/sites/default/files/knowledge_base/Port%20Assign4.2e.xls).
+
+6.  You can now shutdown the 3 applications with Ctrl+C.
 
 
 ## Multicast-less example (CDS)
+
+You will need 3 terminals to run this example.
 
 1. On terminal 1, source the variables script and run an RTI DDS Ping publisher on SHMEM acting as a local publisher:
     ```
@@ -97,4 +107,6 @@ For convenience, the rest of the README will use the Linux variable sign ($) ins
     ...
     ```
 
-7. You can now shutdown the 3 applications with Ctrl+C.
+7. (Optional) You can run Wireshark and capture data to verify that the traffic only goes to the 2 different ports that Routing Service opens: Unicast discovery and Unicast user-data. Which ports are actually in use will depend on the domain ID you use for UDP and whether you started the RTI DDS Ping application on the same machine as Routing Service or not. Remember you can check the ports in use on this [spreadsheet](https://d2vkrkwbbxbylk.cloudfront.net/sites/default/files/knowledge_base/Port%20Assign4.2e.xls).
+
+8. You can now shutdown the 4 applications with Ctrl+C.
