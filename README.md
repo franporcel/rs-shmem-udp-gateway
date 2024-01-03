@@ -85,9 +85,9 @@ source the variables script and start Routing Service:
 QoS profiles for this example are _shmem_profile_ and _multicast_. The RS file
 contains a _domain_route_ with 2 DPs. 1 for UDP and another one for SHMEM
 (configured through the DP QoS). It also contains 2 _auto_topic_route_ tags
-that allow the traffic to flow in the SHMEM --> UDP and SHMEM <-- directions.
-In a real scenario, there would most likely be more topic routes, because
-different topics will require different DW / DR QoS policies.
+that allow the traffic to flow in the SHMEM --> UDP and SHMEM <-- UDP
+directions. In a real scenario, there would most likely be more topic routes,
+because different topics will require different DW / DR QoS policies.
 
 6. (Optional) You can run Wireshark and capture data to verify that the
 traffic only goes to the 3 different ports that Routing Service opens:
@@ -153,9 +153,9 @@ script and start Routing Service:
 QoS profiles for this example are _shmem_profile_ and _no_multicast_. The RS
 file contains a _domain_route_ with 2 DPs. 1 for UDP and another one for SHMEM
 (configured through the DP QoS). It also contains 2 _auto_topic_route_ tags
-that allow the traffic to flow in the SHMEM --> UDP and SHMEM <-- directions.
-In a real scenario, there would most likely be more topic routes, because
-different topics will require different DW / DR QoS policies.
+that allow the traffic to flow in the SHMEM --> UDP and SHMEM <-- UDP
+directions. In a real scenario, there would most likely be more topic routes,
+because different topics will require different DW / DR QoS policies.
 
 8. (Optional) You can run Wireshark and capture data to verify that the
 traffic only goes to the 2 different ports that Routing Service opens: Unicast
