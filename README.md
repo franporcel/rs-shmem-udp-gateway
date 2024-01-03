@@ -69,7 +69,6 @@ source the variables script and start Routing Service:
     source variables.sh
     $NDDSHOME/bin/rtiroutingservice -cfgFile RS_config_multicast.xml -cfgName gateway_SHMEM_and_UDP
     ```
-
 4. The subscriber should now be receiving data. For instance:
 
     ```bash
@@ -82,7 +81,15 @@ source the variables script and start Routing Service:
     ...
     ```
 
-5. (Optional) You can run Wireshark and capture data to verify that the
+5. (Optional) Feel free to explore the QoS and RS config files. The relevant
+QoS profiles for this example are _shmem_profile_ and _multicast_. The RS file
+contains a _domain_route_ with 2 DPs. 1 for UDP and another one for SHMEM
+(configured through the DP QoS). It also contains 2 _auto_topic_route_ tags
+that allow the traffic to flow in the SHMEM --> UDP and SHMEM <-- directions.
+In a real scenario, there would most likely be more topic routes, because
+different topics will require different DW / DR QoS policies.
+
+6. (Optional) You can run Wireshark and capture data to verify that the
 traffic only goes to the 3 different ports that Routing Service opens:
 Multicast discovery, Unicast discovery and Unicast user-data. Which ports are
 actually in use will depend on the domain ID you use for UDP and whether you
@@ -141,7 +148,16 @@ script and start Routing Service:
     ...
     ```
 
-7. (Optional) You can run Wireshark and capture data to verify that the
+
+7. (Optional) Feel free to explore the QoS and RS config files. The relevant
+QoS profiles for this example are _shmem_profile_ and _no_multicast_. The RS
+file contains a _domain_route_ with 2 DPs. 1 for UDP and another one for SHMEM
+(configured through the DP QoS). It also contains 2 _auto_topic_route_ tags
+that allow the traffic to flow in the SHMEM --> UDP and SHMEM <-- directions.
+In a real scenario, there would most likely be more topic routes, because
+different topics will require different DW / DR QoS policies.
+
+8. (Optional) You can run Wireshark and capture data to verify that the
 traffic only goes to the 2 different ports that Routing Service opens: Unicast
 discovery and Unicast user-data. Which ports are actually in use will depend
 on the domain ID you use for UDP and whether you started the RTI DDS Ping
